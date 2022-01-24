@@ -15,7 +15,7 @@ find_package(spdlog REQUIRED)
 # 包含目录
 include_directories(
         third-party/rapidjson
-        core
+        ${CMAKE_CURRENT_SOURCE_DIR}
         ${Qt6Widgets_INCLUDE_DIRS}
         ${SDL2_INCLUDE_DIRS}
         ${SPDLOG_INCLUDE_DIRS}
@@ -23,16 +23,18 @@ include_directories(
 
 set(
         QtDriver
-        driver/mainwindow.h driver/mainwindow.cpp)
+        driver/mainwindow.cpp
+        driver/message_window.cpp)
 
 set(
         Core
         ${CMAKE_CURRENT_SOURCE_DIR}/core/config.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/core/nes.cpp
 )
 
 add_subdirectory(test)
 
-set(SOURCES ${QtDriver} ${Core} main.cpp)
+set(SOURCES ${QtDriver} ${Core} main.cpp utils/logger/abstract_logger.h)
 
 add_executable(pgnes ${SOURCES})
 

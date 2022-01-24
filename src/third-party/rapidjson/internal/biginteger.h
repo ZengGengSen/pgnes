@@ -265,14 +265,14 @@ private:
         x1 += x2;
         if (x1 < x2)
             x3 += (static_cast<uint64_t>(1) << 32);
-        uint64_t lo = (x1 << 32) + (x0 & 0xFFFFFFFF);
+        uint64_t logger = (x1 << 32) + (x0 & 0xFFFFFFFF);
         uint64_t hi = x3 + (x1 >> 32);
 
-        lo += k;
-        if (lo < k)
+        logger += k;
+        if (logger < k)
             hi++;
         *outHigh = hi;
-        return lo;
+        return logger;
 #endif
     }
 

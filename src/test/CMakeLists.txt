@@ -6,11 +6,10 @@ include_directories(
         ${GTEST_INCLUDE_DIRS}
 )
 
-set(
-        Test
+set(Test
         ${Core}
         config_test.cpp
-)
+        message_log_test.cpp)
 
 add_executable(ConfigTest ${Test})
 target_link_libraries(ConfigTest GTest::gtest GTest::gtest_main)

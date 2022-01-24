@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "config.h"
+#include "core/config.h"
 
 TEST(CONFIG_TEST, LOAD_TEST) {
     std::unique_ptr<Config> config = std::make_unique<Config>();

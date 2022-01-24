@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 #include <QRecursiveMutex>
+#include <QAction>
+#include <QMenuBar>
+
+#include "core/nes.h"
+#include "message_window.h"
 
 namespace pg {
     class PGMainWindow : public QMainWindow {
@@ -17,12 +22,21 @@ namespace pg {
         inline void unlock() { mutex->unlock(); }
         bool tryLock(int timeout) { return mutex->tryLock(timeout); }
 
-        void init(int argc, const std::vector<std::string> &argv);
+        void init(const std::vector<std::string> &argv);
 
     private:
         void showUsage();
+        void createMainMenu();
 
+        Nes nes{};
+
+        std::unique_ptr<MessageWindow> messageWindow{};
+        std::unique_ptr<QAction> msgLogAct{};
+        std::unique_ptr<QMenuBar> menubar{};
+        std::shared_ptr<Logger> logger;
     };
+
+    extern std::unique_ptr<PGMainWindow> mainWindow;
 }
 
 

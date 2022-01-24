@@ -3,7 +3,7 @@
 
 # Compiled Object files
 *.slo
-*.lo
+*.logger
 *.o
 *.obj
 
@@ -32,4 +32,5 @@
 *.app
 
 cmake-build-debug
+cmake-build-debug-
 .idea
